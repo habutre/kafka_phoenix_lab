@@ -6,14 +6,31 @@ defmodule KafkaPhoenixLab.Application do
   use Application
 
   def start(_type, _args) do
+    import Supervisor.Spec
+
     # List all child processes to be supervised
     children = [
       # Start the Ecto repository
       KafkaPhoenixLab.Repo,
       # Start the endpoint when the application starts
-      KafkaPhoenixLabWeb.Endpoint
+      KafkaPhoenixLabWeb.Endpoint,
       # Starts a worker by calling: KafkaPhoenixLab.Worker.start_link(arg)
       # {KafkaPhoenixLab.Worker, arg},
+      supervisor(
+        KafkaEx.ConsumerGroup,
+        [
+          KafkaPhoenixLab.InteractionConsumer,
+          "kafka-phoenix-lab-consumer",
+          ["interactions"],
+          [
+            commit_interval: 5000,
+            commit_threshold: 100,
+            enable_auto_commit: true,
+            auto_offset_reset: :latest,
+            heartbeat_interval: 1_000
+          ]
+        ]
+      )
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

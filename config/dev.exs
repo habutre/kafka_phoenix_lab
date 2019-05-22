@@ -74,3 +74,8 @@ config :phoenix, :stacktrace_depth, 20
 
 # Initialize plugs at runtime for faster development compilation
 config :phoenix, :plug_init_mode, :runtime
+
+# Kafka config
+config :kafka_ex,
+  brokers: [{"kafka", 9092}],
+  use_ssl: false

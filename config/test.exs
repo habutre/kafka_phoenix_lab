@@ -16,3 +16,8 @@ config :kafka_phoenix_lab, KafkaPhoenixLabWeb.Endpoint,
 
 # Print only warnings and errors during test
 config :logger, level: :warn
+
+# Kafka config
+config :kafka_ex,
+  brokers: [{"kafka", 9092}],
+  use_ssl: false
