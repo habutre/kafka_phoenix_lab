@@ -19,7 +19,7 @@ defmodule KafkaPhoenixLab.Application do
       supervisor(
         KafkaEx.ConsumerGroup,
         [
-          KafkaPhoenixLab.InteractionConsumer,
+          KafkaPhoenixLab.Messaging.InteractionConsumer,
           "kafka-phoenix-lab-consumer",
           ["interactions"],
           [

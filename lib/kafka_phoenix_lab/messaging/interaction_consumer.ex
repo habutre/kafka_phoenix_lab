@@ -1,6 +1,8 @@
-defmodule KafkaPhoenixLab.InteractionConsumer do
+defmodule KafkaPhoenixLab.Messaging.InteractionConsumer do
   use KafkaEx.GenConsumer
   require Logger
+
+  defstruct [:sent, :received, :timestamp]
 
   def handle_message_set(message_set, state) do
     for message <- message_set do
