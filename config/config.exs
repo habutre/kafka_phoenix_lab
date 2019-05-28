@@ -15,7 +15,8 @@ config :kafka_phoenix_lab, KafkaPhoenixLabWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "QAnFjUaDo3oQ4TkrQKoySuw+UzawYxBbs4xn+EYmKX1ZmlODSeEjnzIcttP2puDd",
   render_errors: [view: KafkaPhoenixLabWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: KafkaPhoenixLab.PubSub, adapter: Phoenix.PubSub.PG2]
+  pubsub: [name: KafkaPhoenixLab.PubSub, adapter: Phoenix.PubSub.PG2],
+  live_view: [signing_salt: "XiBb0My/p0A2BlngBOHzZ9IJPjCqvIIM"]
 
 # Configures Elixir's Logger
 config :logger, :console,
