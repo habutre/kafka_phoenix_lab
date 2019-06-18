@@ -26,12 +26,5 @@ defmodule KafkaPhoenixLabWeb.ChannelCase do
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(KafkaPhoenixLab.Repo)
-
-    unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(KafkaPhoenixLab.Repo, {:shared, self()})
-    end
-
-    :ok
   end
 end

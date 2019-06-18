@@ -10,8 +10,6 @@ defmodule KafkaPhoenixLab.Application do
 
     # List all child processes to be supervised
     children = [
-      # Start the Ecto repository
-      KafkaPhoenixLab.Repo,
       # Start the endpoint when the application starts
       KafkaPhoenixLabWeb.Endpoint,
       # Starts a worker by calling: KafkaPhoenixLab.Worker.start_link(arg)

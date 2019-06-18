@@ -7,9 +7,6 @@
 # General application configuration
 use Mix.Config
 
-config :kafka_phoenix_lab,
-  ecto_repos: [KafkaPhoenixLab.Repo]
-
 # Configures the endpoint
 config :kafka_phoenix_lab, KafkaPhoenixLabWeb.Endpoint,
   url: [host: "localhost"],
