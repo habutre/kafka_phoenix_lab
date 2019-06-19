@@ -1,13 +1,5 @@
 use Mix.Config
 
-# Configure your database
-config :kafka_phoenix_lab, KafkaPhoenixLab.Repo,
-  username: "postgres",
-  password: "postgres",
-  database: "kafka_phoenix_lab_test",
-  hostname: "localhost",
-  pool: Ecto.Adapters.SQL.Sandbox
-
 # We don't run a server during test. If one is required,
 # you can enable the server option below.
 config :kafka_phoenix_lab, KafkaPhoenixLabWeb.Endpoint,
@@ -16,3 +8,8 @@ config :kafka_phoenix_lab, KafkaPhoenixLabWeb.Endpoint,
 
 # Print only warnings and errors during test
 config :logger, level: :warn
+
+# Kafka config
+config :kafka_ex,
+  brokers: [{"kafka", 9092}],
+  use_ssl: false
