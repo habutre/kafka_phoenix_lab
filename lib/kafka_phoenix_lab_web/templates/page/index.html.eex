@@ -33,3 +33,13 @@
     </ul>
   </article>
 </section>
+<section>
+  <article class="row">
+    <span class="column column-50">Scala Damage</span>
+    <span class="column column-50">Elixir Damage</span>
+  </article>
+  <article class="row">
+    <span class="column column-50" id="scala-damage"></span>
+    <span class="column column-50" id="elixir-damage"></span>
+  </article>
+</section>
