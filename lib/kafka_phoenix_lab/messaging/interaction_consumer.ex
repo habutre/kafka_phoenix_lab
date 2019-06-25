@@ -20,4 +20,8 @@ defmodule KafkaPhoenixLab.Messaging.InteractionConsumer do
   defp publish_damage("scala-pub" = key, damage) do
       KafkaPhoenixLabWeb.Endpoint.broadcast!("interactions:overview", "scala-damage", %{damage: damage})
   end
+
+  defp publish_damage(key, _damage) do
+    Logger.warn("Key #{key} is unknown")
+  end
 end
