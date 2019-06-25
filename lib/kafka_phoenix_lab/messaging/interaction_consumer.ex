@@ -13,11 +13,11 @@ defmodule KafkaPhoenixLab.Messaging.InteractionConsumer do
     {:async_commit, state}
   end
 
-  defp publish_damage("elixir-pub" = key, damage) do
+  defp publish_damage("elixir-damage" = key, damage) do
       KafkaPhoenixLabWeb.Endpoint.broadcast!("interactions:overview", "elixir-damage", %{damage: damage})
   end
 
-  defp publish_damage("scala-pub" = key, damage) do
+  defp publish_damage("scala-damage" = key, damage) do
       KafkaPhoenixLabWeb.Endpoint.broadcast!("interactions:overview", "scala-damage", %{damage: damage})
   end
 
