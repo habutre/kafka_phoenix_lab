@@ -60,6 +60,8 @@ let elixirDamage = document.querySelector("#elixir-damage")
 let scalaDamage = document.querySelector("#scala-damage")
 let allElixirDamage = document.querySelector("#all-elixir-damage")
 let allScalaDamage = document.querySelector("#all-scala-damage")
+let allElixirShots = document.querySelector("#all-elixir-shots")
+let allScalaShots = document.querySelector("#all-scala-shots")
 
 channel.on("elixir-damage", payload => {
   elixirDamage.innerText = `${payload.damage}`
@@ -70,8 +72,10 @@ channel.on("scala-damage", payload => {
 })
 
 channel.on("damage", payload => {
-  allElixirDamage.innerText = `${"Acc Damage: " + payload.elixir_damage + " # Shots: " +  payload.elixir_shots}`
-  allScalaDamage.innerText = `${"Acc Damage: " + payload.scala_damage + " # Shots: " +  payload.scala_shots}`
+  allElixirDamage.innerText = `${payload.elixir_damage}`
+  allElixirShots.innerText = `${payload.elixir_shots}`
+  allScalaDamage.innerText = `${payload.scala_damage}`
+  allScalaShots.innerText = `${payload.scala_shots}`
 })
 
 channel.join()
