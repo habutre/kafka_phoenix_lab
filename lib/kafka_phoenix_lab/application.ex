@@ -31,6 +31,9 @@ defmodule KafkaPhoenixLab.Application do
       )
     ]
 
+    # TODO supervise me
+    Process.register(KafkaPhoenixLab.Damage.DamageManagement.start(nil), :damage_mngt)
+
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
     opts = [strategy: :one_for_one, name: KafkaPhoenixLab.Supervisor]

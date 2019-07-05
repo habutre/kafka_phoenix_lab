@@ -55,7 +55,25 @@ let socket = new Socket("/socket", {params: {token: window.userToken}})
 socket.connect()
 
 // Now that you are connected, you can join channels with a topic:
-let channel = socket.channel("topic:subtopic", {})
+let channel = socket.channel("interactions:overview", {})
+let elixirDamage = document.querySelector("#elixir-damage")
+let scalaDamage = document.querySelector("#scala-damage")
+let allElixirDamage = document.querySelector("#all-elixir-damage")
+let allScalaDamage = document.querySelector("#all-scala-damage")
+
+channel.on("elixir-damage", payload => {
+  elixirDamage.innerText = `${payload.damage}`
+})
+
+channel.on("scala-damage", payload => {
+  scalaDamage.innerText = `${payload.damage}`
+})
+
+channel.on("damage", payload => {
+  allElixirDamage.innerText = `${"Acc Damage: " + payload.elixir_damage + " # Shots: " +  payload.elixir_shots}`
+  allScalaDamage.innerText = `${"Acc Damage: " + payload.scala_damage + " # Shots: " +  payload.scala_shots}`
+})
+
 channel.join()
   .receive("ok", resp => { console.log("Joined successfully", resp) })
   .receive("error", resp => { console.log("Unable to join", resp) })
