@@ -1,3 +1,39 @@
 /* This file is for your main application css. */
 
 @import "./phoenix.css";
+
+div img {
+  vertical-align: middle;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-center {
+  text-align: center;
+}
+
+#elixir-damage, #all-elixir-damage, #all-elixir-shots {
+  color: darkblue;
+}
+
+#scala-damage, #all-scala-damage, #all-scala-shots {
+  color: red;
+}
+
+#scala-damage, #elixir-damage {
+  font-size: 14em;
+}
+
+#all-elixir-damage, #all-scala-damage {
+  font-size: 8em;
+}
+
+#all-elixir-shots, #all-scala-shots {
+  font-size: 6em;
+}
