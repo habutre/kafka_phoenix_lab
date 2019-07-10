@@ -1,19 +1,19 @@
 <section>
   <article class="row">
-    <span class="text-left column column-25" id="scala-damage"></span>
+    <span class="text-left column column-25" id="scala-damage">0</span>
     <div class="column column-25 current"><img src="<%= Routes.static_path(@conn, "/images/scala-logo-sm.png") %>" alt="Elixir logo" title="Scala logo"/></div>
     <div class="column column-25 current"><img src="<%= Routes.static_path(@conn, "/images/elixir-logo-sm.png") %>" alt="Elixir logo" title="Elixir logo"/></div>
-    <span class="text-right column column-25" id="elixir-damage"></span>
+    <span class="text-right column column-25" id="elixir-damage">0</span>
   </article>
   <article class="row">
-    <span class="text-left column column-40" id="all-scala-damage"></span>
+    <span class="text-left column column-40" id="all-scala-damage">0</span>
     <div class="column column-15"><img src="<%= Routes.static_path(@conn, "/images/confounded.png") %>" alt="damage" title="damage"/></div>
-    <span class="text-right column column-45" id="all-elixir-damage"></span>
+    <span class="text-right column column-45" id="all-elixir-damage">0</span>
   </article>
   <br><br>
   <article class="row">
-    <span class="text-left column column-40" id="all-scala-shots"></span>
+    <span class="text-left column column-40" id="all-scala-shots">0</span>
     <div class="column column-15"><img src="<%= Routes.static_path(@conn, "/images/bomb.png") %>" alt="shots" title="shots"/></div>
-    <span class="text-right column column-45" id="all-elixir-shots"></span>
+    <span class="text-right column column-45" id="all-elixir-shots">0</span>
   </article>
 </section>
