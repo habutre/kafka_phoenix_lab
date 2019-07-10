@@ -2,8 +2,14 @@
 
 @import "./phoenix.css";
 
-div img {
-  vertical-align: middle;
+div {
+  position: relative; 
+}
+
+img {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .text-left {
@@ -27,11 +33,11 @@ div img {
 }
 
 #scala-damage, #elixir-damage {
-  font-size: 14em;
+  font-size: 13em;
 }
 
 #all-elixir-damage, #all-scala-damage {
-  font-size: 8em;
+  font-size: 6em;
 }
 
 #all-elixir-shots, #all-scala-shots {
