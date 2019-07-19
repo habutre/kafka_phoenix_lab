@@ -7,7 +7,6 @@ defmodule KafkaPhoenixLab.Messaging.InteractionConsumer do
   def handle_message_set(message_set, state) do
     acc_state =
       for message <- message_set do
-
         publish_damage(message.key, String.to_integer(message.value))
 
         Logger.debug("The message content will be sent to view:" <> inspect(message))

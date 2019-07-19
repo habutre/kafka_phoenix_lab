@@ -14,6 +14,23 @@ defmodule KafkaPhoenixLab.Application do
       KafkaPhoenixLabWeb.Endpoint,
       # Starts a worker by calling: KafkaPhoenixLab.Worker.start_link(arg)
       # {KafkaPhoenixLab.Worker, arg},
+      {KafkaEx.ConsumerGroup,
+       [
+         KafkaPhoenixLab.Messaging.InteractionConsumer,
+         "kafka-phoenix-lab-consumer",
+         ["interactions"],
+         [
+           commit_interval: 5000,
+           commit_threshold: 100,
+           enable_auto_commit: true,
+           auto_offset_reset: :latest,
+           heartbeat_interval: 1_000
+         ]
+       ]}
+    ]
+
+    # use in case local kafka_ex dep is reloaded and lose the start_link/1
+    kafka_sup =
       supervisor(
         KafkaEx.ConsumerGroup,
         [
@@ -29,7 +46,17 @@ defmodule KafkaPhoenixLab.Application do
           ]
         ]
       )
-    ]
+
+    IO.inspect(Mix.env(), label: "MIx checking=")
+
+    children =
+      if Mix.env() == :test do
+        [kafka_sup] ++ children
+      else
+        children
+      end
+
+    IO.inspect(children)
 
     # TODO supervise me
     Process.register(KafkaPhoenixLab.Damage.DamageManagement.start(nil), :damage_mngt)
@@ -40,10 +67,49 @@ defmodule KafkaPhoenixLab.Application do
     Supervisor.start_link(children, opts)
   end
 
+  # ---
+
+  # @doc """
+  #  Conformist start_link to Supervisor //TODO create a PR if works
+  # """
+  # @spec start_link([]) :: Supervisor.on_start()
+  # def start_link(args \\ []) do
+  #  consumer_module = Enum.at(args, 0)
+  #  group_name = Enum.at(args, 1)
+  #  topics = Enum.at(args, 2)
+  #  opts = Enum.at(args, 3)
+
+  #  {supervisor_opts, module_opts} =
+  #    Keyword.split(opts, [:name, :strategy, :max_restarts, :max_seconds])
+
+  #  Supervisor.start_link(
+  #    __MODULE__,
+  #    {consumer_module, group_name, topics, module_opts},
+  #    supervisor_opts
+  #  )
+  # end
+  # ---
+
   # Tell Phoenix to update the endpoint configuration
   # whenever the application is updated.
   def config_change(changed, _new, removed) do
     KafkaPhoenixLabWeb.Endpoint.config_change(changed, removed)
     :ok
+  end
+
+  # ---
+  defp kafka_consumer_group_opts do
+    [
+      KafkaPhoenixLab.Messaging.InteractionConsumer,
+      "kafka-phoenix-lab-consumer",
+      ["interactions"],
+      [
+        commit_interval: 5000,
+        commit_threshold: 100,
+        enable_auto_commit: true,
+        auto_offset_reset: :latest,
+        heartbeat_interval: 1_000
+      ]
+    ]
   end
 end

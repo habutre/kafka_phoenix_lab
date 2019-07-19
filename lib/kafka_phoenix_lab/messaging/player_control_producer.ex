@@ -15,6 +15,9 @@ defmodule KafkaPhoenixLab.Messaging.PlayerControlProducer do
     request = %Request{topic: "player-control", partition: 0, required_acks: 1, messages: [msg]}
 
     KafkaEx.produce(request)
-    Logger.info(String.capitalize(command) <> " requested to " <> String.capitalize(player) <> " Player")
+
+    Logger.info(
+      String.capitalize(command) <> " requested to " <> String.capitalize(player) <> " Player"
+    )
   end
 end
