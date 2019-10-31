@@ -9,7 +9,7 @@ defmodule KafkaPhoenixLab.Application do
     import Supervisor.Spec
 
     # List all child processes to be supervised
-    children = [
+    kafka_new_sup_api = [
       # Start the endpoint when the application starts
       KafkaPhoenixLabWeb.Endpoint,
       # Starts a worker by calling: KafkaPhoenixLab.Worker.start_link(arg)
@@ -30,7 +30,7 @@ defmodule KafkaPhoenixLab.Application do
     ]
 
     # use in case local kafka_ex dep is reloaded and lose the start_link/1
-    kafka_sup =
+    kafka_old_sup_api =
       supervisor(
         KafkaEx.ConsumerGroup,
         [
@@ -38,7 +38,7 @@ defmodule KafkaPhoenixLab.Application do
           "kafka-phoenix-lab-consumer",
           ["interactions"],
           [
-            commit_interval: 5000,
+            commit_interval: 3000,
             commit_threshold: 100,
             enable_auto_commit: true,
             auto_offset_reset: :latest,
@@ -47,16 +47,19 @@ defmodule KafkaPhoenixLab.Application do
         ]
       )
 
-    IO.inspect(Mix.env(), label: "MIx checking=")
+    # skip for while the new supervisor API
+    children = [kafka_old_sup_api]
 
-    children =
-      if Mix.env() == :test do
-        [kafka_sup] ++ children
-      else
-        children
-      end
+    #IO.inspect(Mix.env(), label: "MIx checking=")
 
-    IO.inspect(children)
+    #children =
+    #  if Mix.env() == :test do
+    #    children = [kafka_old_sup_api] ++ kafka_new_sup_api
+    #  else
+    #    children = [kafka_old_sup_api]
+    #  end
+
+    #IO.inspect(children)
 
     # TODO supervise me
     Process.register(KafkaPhoenixLab.Damage.DamageManagement.start(nil), :damage_mngt)

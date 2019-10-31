@@ -111,21 +111,21 @@ services:
     extra_hosts:
       - "moby:127.0.0.1"
 
-  db:
-    image: postgres:11-alpine
+  #db:
+  #  image: postgres:11-alpine
 
-  web:
-    build: .
-    volumes:
-      - type: bind
-        source: ../
-        target: /app
-    ports:
-      - "4000:4000"
-    depends_on:
-      - db
-      - kafka-ssl-1
-      - kafka-ssl-2
-      - kafka-ssl-3
-    command:
-      - dev/run.sh
+  #web:
+  #  build: .
+  #  volumes:
+  #    - type: bind
+  #      source: ../
+  #      target: /app
+  #  ports:
+  #    - "4000:4000"
+  #  depends_on:
+  #    - db
+  #    - kafka-ssl-1
+  #    - kafka-ssl-2
+  #    - kafka-ssl-3
+  #  command:
+  #    - dev/run.sh
