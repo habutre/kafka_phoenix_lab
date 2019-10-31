@@ -1,5 +1,6 @@
 defmodule KafkaPhoenixLabWeb.InteractionsChannel do
   use Phoenix.Channel
+  alias KafkaPhoenixLab.Messaging.PlayerControlProducer
 
   def join("interactions:overview", _message, socket) do
     {:ok, socket}
@@ -17,6 +18,12 @@ defmodule KafkaPhoenixLabWeb.InteractionsChannel do
 
   def handle_in("scala-damage", %{"damage" => damage}, socket) do
     broadcast!(socket, "scala-damage", %{damage: damage})
+
+    {:noreply, socket}
+  end
+
+  def handle_in("player-control", msg, socket) do
+    PlayerControlProducer.send_player_command(msg)
 
     {:noreply, socket}
   end
