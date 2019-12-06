@@ -78,6 +78,5 @@ config :kafka_ex,
     cacertfile: File.cwd!() <> "/dev/secrets/consumer-ca1-signed.crt"
     #certfile: File.cwd!() <> "/dev/secrets/consumer.csr"
     #keyfile: File.cwd!() <> "/dev/secrets/consumer_sslkey_creds"
-    #password: "confluent"
   ],
   kafka_version: "kayrock"

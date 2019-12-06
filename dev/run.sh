@@ -35,7 +35,11 @@ echo "\nPostgres is available: continuing with database setup..."
 ### mix ecto.create
 ### mix ecto.migrate
 
-echo "\nTesting the installation..."
+# Force wait for Kafka readness
+echo -e "\n[$(date)] Waiting for Kafka Cluster readness"
+sleep 90
+
+echo "\n\n[$(date)] Testing the installation..."
 # "Prove" that install was successful by running the tests
 mix test
 

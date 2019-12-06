@@ -39,8 +39,7 @@ defmodule KafkaPhoenixLab.MixProject do
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
-      #{:kafka_ex, "~> 0.10.0"},
-      {:kafka_ex, github: "kafkaex/kafka_ex"},
+      {:kafka_ex, "~> 0.10.0"},
       {:credo, "~> 1.0.0", only: [:dev, :test], runtime: false},
       {:phoenix_live_view, github: "phoenixframework/phoenix_live_view"}
     ]

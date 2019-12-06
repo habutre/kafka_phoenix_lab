@@ -1,3 +1,3 @@
 #!/bin/sh
 #
-sudo KAFKA_SSL_SECRETS_DIR=/home/habutre/Projects/kafka_phoenix_lab/dev/secrets docker-compose up --build
+sudo KAFKA_SSL_SECRETS_DIR=${PWD}/dev/secrets docker-compose -f dev/docker-compose.yml up --build --abort-on-container-exit --force-recreate --remove-orphans

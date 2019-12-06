@@ -12,7 +12,7 @@
   "file_system": {:hex, :file_system, "0.2.7", "e6f7f155970975789f26e77b8b8d8ab084c59844d8ecfaf58cbda31c494d14aa", [:mix], [], "hexpm"},
   "gettext": {:hex, :gettext, "0.17.0", "abe21542c831887a2b16f4c94556db9c421ab301aee417b7c4fbde7fbdbe01ec", [:mix], [], "hexpm"},
   "jason": {:hex, :jason, "1.1.2", "b03dedea67a99223a2eaf9f1264ce37154564de899fd3d8b9a21b1a6fd64afe7", [:mix], [{:decimal, "~> 1.0", [hex: :decimal, repo: "hexpm", optional: true]}], "hexpm"},
-  "kafka_ex": {:git, "https://github.com/kafkaex/kafka_ex.git", "9c93293c90961beeeff345f4ece585379fa799dd", []},
+  "kafka_ex": {:hex, :kafka_ex, "0.10.0", "74a4660f78b488d333d13c42315d54be096a57da35981c99c8aceb2d1d5c34b4", [:mix], [], "hexpm"},
   "kayrock": {:hex, :kayrock, "0.1.9", "db2ddbd9b1e5e03fe19ba535796260e26691227cd259efa23636af6f20c87cdb", [:mix], [{:connection, "~>1.0.4", [hex: :connection, repo: "hexpm", optional: false]}, {:crc32cer, "~>0.1.3", [hex: :crc32cer, repo: "hexpm", optional: false]}, {:varint, "~>1.2.0", [hex: :varint, repo: "hexpm", optional: false]}], "hexpm"},
   "mime": {:hex, :mime, "1.3.1", "30ce04ab3175b6ad0bdce0035cba77bba68b813d523d1aac73d9781b4d193cf8", [:mix], [], "hexpm"},
   "phoenix": {:hex, :phoenix, "1.4.8", "c72dc3adeb49c70eb963a0ea24f7a064ec1588e651e84e1b7ad5ed8253c0b4a2", [:mix], [{:jason, "~> 1.0", [hex: :jason, repo: "hexpm", optional: true]}, {:phoenix_pubsub, "~> 1.1", [hex: :phoenix_pubsub, repo: "hexpm", optional: false]}, {:plug, "~> 1.8.1 or ~> 1.9", [hex: :plug, repo: "hexpm", optional: false]}, {:plug_cowboy, "~> 1.0 or ~> 2.0", [hex: :plug_cowboy, repo: "hexpm", optional: true]}, {:telemetry, "~> 0.4", [hex: :telemetry, repo: "hexpm", optional: false]}], "hexpm"},
