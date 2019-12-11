@@ -39,9 +39,12 @@ defmodule KafkaPhoenixLab.Application do
           ["interactions"],
           [
             commit_interval: 3000,
-            commit_threshold: 100,
+            commit_threshold: 300,
+            sync_timeout: 3000,
             enable_auto_commit: true,
             auto_offset_reset: :latest,
+            max_seconds: 60,
+            max_restarts: 10,
             heartbeat_interval: 1_000
           ]
         ]
