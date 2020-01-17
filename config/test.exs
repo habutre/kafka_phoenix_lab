@@ -11,5 +11,15 @@ config :logger, level: :warn
 
 # Kafka config
 config :kafka_ex,
-  brokers: [{"kafka", 9092}],
-  use_ssl: false
+  brokers: [
+    {"localhost", 19092},
+    {"localhost", 29092},
+    {"localhost", 39092}
+  ],
+  use_ssl: true,
+  ssl_options: [
+    cacertfile: File.cwd!() <> "/dev/secrets/consumer-ca1-signed.crt"
+    #certfile: File.cwd!() <> "/dev/secrets/consumer.csr"
+    #keyfile: File.cwd!() <> "/dev/secrets/consumer_sslkey_creds"
+  ],
+  kafka_version: "kayrock"
